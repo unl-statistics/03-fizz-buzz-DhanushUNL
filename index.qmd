@@ -24,42 +24,41 @@ Start by filling in the following table for the numbers 1:30 manually, to get a 
 
 | Input |     Output    |
 |-------|---------------|
-| 1     |     2         |
-| 2     |    Fizz       |
-| 3     |     4         |
-| 4     |    Buzz       |
-| 5     |     6         |
-| 6     |     7         |
-| 7     |     8         |
-| 8     |    Fizz       |
-| 9     |    Buzz       |
-| 10    |     11        |
-| 11    |    Fizz       |
-| 12    |     13        |
-| 13    |     14        |
-| 14    | FIzz - Buzz   |
-| 15    |     16        |
-| 16    |     17        |
-| 17    |    Fizz       |
-| 18    |     19        |
-| 19    |    Buzz       |
-| 20    |    Fizz       |
-| 21    |     22        |
-| 22    |     23        |
-| 23    |    Fizz       |
-| 24    |    Buzz       |
-| 25    |     26        |
-| 26    |    Fizz       |
-| 27    |     28        |
-| 28    |     29        |
-| 29    | Fizz - Buzz   |
-| 30    |     31        |
+| 1     |     1         |
+| 2     |     2         |
+| 3     |    Fizz       |
+| 4     |     4         |
+| 5     |    Buzz       |
+| 6     |     6         |
+| 7     |     7         |
+| 8     |     8         |
+| 9     |    Fizz       |
+| 10    |    Buzz       |
+| 11    |     11        |
+| 12    |    Fizz       |
+| 13    |     13        |
+| 14    |     14        |
+| 15    | FIzz - Buzz   |
+| 16    |     16        |
+| 17    |     17        |
+| 18    |    Fizz       |
+| 19    |     19        |
+| 20    |    Buzz       |
+| 21    |    Fizz       |
+| 22    |     22        |
+| 23    |     23        |
+| 24    |    Fizz       |
+| 25    |    Buzz       |
+| 26    |     26        |
+| 27    |    Fizz       |
+| 28    |     28        |
+| 29    |     29        |
+| 30    | FIzz - Buzz   |
 
-: Fizzbuzz for 1:30
 
 On paper or using a tool such as <https://excalidraw.com>, create a program flow map for the sequence of if-statements you need to evaluate for fizzbuzz. Add the picture to the folder containing this file, and name the picture flowchart.png. Add the picture to Git and commit/push your changes.
 
-!["Program Flow map for FizzBuzz"](Image/Diagram.png)
+!["Program Flow map for FizzBuzz"](Image/Diagram 01.png)
 
 In the chunk below, write code which will solve this problem for a single value `x`. You should be able to change the value of x at the top of the chunk and still get the correct answer.
 
@@ -368,21 +367,29 @@ xx = np.array(choices(range(100), k = 10)) + 1
 def fizzbuzz(x):
     # Check if the data type of x is either float or int
     if x.dtype == "float" or x.dtype == "int":
-        x = np.round(x).astype(int)
+        x1 = np.round(x).astype(int)
         # Create a list with the same length as input x
-        y = [np.nan] * len(x)
+        y = [np.nan] * len(x1)
         
-        # Apply the FizzBuzz logic
+        # Apply the Fizz-Buzz logic
+        
         for i in range(len(x)):
-            if x[i] % 3 == 0 and x[i] % 5 != 0:
+            if x1[i] % 3 == 0 and x1[i] % 5 != 0:
                 y[i] = "Fizz"
-            elif x[i] % 5 == 0 and x[i] % 3 != 0:
+            elif x1[i] % 5 == 0 and x1[i] % 3 != 0:
                 y[i] = "Buzz"
-            elif x[i] % 5 == 0 and x[i] % 3 == 0:
+            elif x1[i] % 5 == 0 and x1[i] % 3 == 0:
                 y[i] = "Fizz-Buzz"
             else:
-                y[i] = x[i]
-        return y
+                y[i] = x1[i]
+        
+        if x.dtype == "float":
+          return(y)
+          print("Warning : all non-integer numbers were rounded to the nearest integer. \n")
+        
+        else:
+          return(y)        
+        
     else:
         print("All elements in the input array must be numbers.", "\n")
 
@@ -391,12 +398,16 @@ def fizzbuzz(x):
 x1 = np.array(["12",3,54,23])
 fizzbuzz(x = x1)
 
-x1 = np.array([1,7,54,32.0,29.0]) ## works for "floats" if sb accidentally input any. eg: 23.0 will be identified as float
+x2 = np.array([12, 34.5,23.6])
+fizzbuzz(x2)
 
-fizzbuzz(x = x1)
+x3 = np.array([1,7,54,32.0,29.0]) ## works for "floats" if sb accidentally input any. eg: 23.0 will be identified as float.
+
+fizzbuzz(x = x3)
 # Printing the results in a data frame
 yy = fizzbuzz(x = xx)
 res = pd.DataFrame({"x": xx, "result": yy})
 res
+
 
 ```
