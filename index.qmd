@@ -361,8 +361,8 @@ import numpy as np
 import pandas as pd
 from random import choices
 
-# Create a array of 10, consisting random values from 0 to 100
-xx = np.array(choices(range(100), k = 10)) + 1
+# Create an array of 10 random values from 0 to 100
+xx = np.array(choices(range(100), k=10)) + 1
 
 def fizzbuzz(x):
     # Check if the data type of x is either float or int
@@ -384,26 +384,23 @@ def fizzbuzz(x):
                 y[i] = x1[i]
         
         if x.dtype == "float":
-          return(y)
-          print("Warning : all non-integer numbers were rounded to the nearest integer. \n")
-        
-        else:
-          return(y)        
+            print("Warning : all non-integer numbers were rounded to the nearest integer. \n")
+        return y       
         
     else:
         print("All elements in the input array must be numbers.", "\n")
+        return None
+
+
 
 ## try to use the function using a string input.
 
 x1 = np.array(["12",3,54,23])
 fizzbuzz(x = x1)
 
-x2 = np.array([12, 34.5,23.6])
+x2 = np.array([12, 34.5,23.6]) ## works for floats too
 fizzbuzz(x2)
 
-x3 = np.array([1,7,54,32.0,29.0]) ## works for "floats" if sb accidentally input any. eg: 23.0 will be identified as float.
-
-fizzbuzz(x = x3)
 # Printing the results in a data frame
 yy = fizzbuzz(x = xx)
 res = pd.DataFrame({"x": xx, "result": yy})
